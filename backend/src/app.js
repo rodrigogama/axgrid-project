@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
-const port = 3000;
+const port = 3001;
 
 // JSON server router
 const router = jsonServer.router(path.join(__dirname, 'db.json'));
