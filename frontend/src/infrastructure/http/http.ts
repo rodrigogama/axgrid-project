@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
 import apiInstance from "./config";
 
 class API {
@@ -6,8 +6,8 @@ class API {
     return await apiInstance.get<T>(url, config);
   }
 
-  async post<T>(url: string, data: any, config?: AxiosRequestConfig) {
-    return await apiInstance.post<T>(url, data, config);
+  async post<T, R>(url: string, data: any, config?: AxiosRequestConfig) {
+    return await apiInstance.post<T, AxiosResponse<R>>(url, data, config);
   }
 
   // other http methods can be implemented when needed. Eg: put, delete...
