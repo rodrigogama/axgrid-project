@@ -1,3 +1,446 @@
 {
-  "messages": []
+  "energyTypes": [
+    { "id": "1", "name": "Solar" },
+    { "id": "2", "name": "Gas" },
+    { "id": "3", "name": "Wind" },
+    { "id": "4", "name": "Hydro" },
+    { "id": "5", "name": "Kinetic" },
+    { "id": "6", "name": "Thermal" }
+  ],
+  "energyTypeFormSchema": [
+    {
+      "id": "1",
+      "name": "Solar",
+      "formSchema": {
+        "title": "Solar Energy Offering Form",
+        "description": "Enter the details of the solar energy offering.",
+        "fields": [
+          {
+            "name": "price",
+            "label": "Price per unit of energy",
+            "type": "number",
+            "placeholder": "e.g., 100",
+            "unit": "kWh/MWh"
+          },
+          {
+            "name": "minimumPurchaseQuantity",
+            "label": "Minimum Purchase Quantity",
+            "type": "number",
+            "placeholder": "e.g., 10"
+          },
+          {
+            "name": "contractTerms",
+            "label": "Contract Terms",
+            "type": "text",
+            "placeholder": "e.g., 1 year, penalties for early termination"
+          },
+          {
+            "name": "paymentTerms",
+            "label": "Payment Terms",
+            "type": "text",
+            "placeholder": "e.g., Monthly, post-delivery"
+          },
+          {
+            "name": "capacity",
+            "label": "Capacity",
+            "type": "number",
+            "placeholder": "e.g., 500",
+            "unit": "kW/MW"
+          },
+          {
+            "name": "location",
+            "label": "Location",
+            "type": "text",
+            "placeholder": "e.g., California, USA"
+          },
+          {
+            "name": "energyOutputPredictions",
+            "label": "Energy Output Predictions",
+            "type": "text",
+            "placeholder": "Based on historical data and weather forecasts"
+          },
+          {
+            "name": "timeOfAvailability",
+            "label": "Time of Availability",
+            "type": "text",
+            "placeholder": "e.g., Daylight hours"
+          },
+          {
+            "name": "certifications",
+            "label": "Certifications",
+            "type": "select",
+            "options": [
+              { "label": "Renewable Energy Certificates (RECs)", "value": "REC" },
+              { "label": "Green", "value": "Green" },
+              { "label": "Eco", "value": "Eco" }
+            ],
+            "placeholder": "Select certifications"
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "name": "Gas",
+      "formSchema": {
+        "title": "Gas Energy Offering Form",
+        "description": "Enter the details of the gas energy offering.",
+        "fields": [
+          {
+            "name": "price",
+            "label": "Price per unit of energy",
+            "type": "number",
+            "placeholder": "e.g., 150",
+            "unit": "kWh/MWh"
+          },
+          {
+            "name": "minimumPurchaseQuantity",
+            "label": "Minimum Purchase Quantity",
+            "type": "number",
+            "placeholder": "e.g., 20"
+          },
+          {
+            "name": "contractTerms",
+            "label": "Contract Terms",
+            "type": "text",
+            "placeholder": "e.g., 2 years, penalties for early termination"
+          },
+          {
+            "name": "paymentTerms",
+            "label": "Payment Terms",
+            "type": "text",
+            "placeholder": "e.g., Quarterly, post-delivery"
+          },
+          {
+            "name": "capacity",
+            "label": "Capacity",
+            "type": "number",
+            "placeholder": "e.g., 1000",
+            "unit": "kW/MW"
+          },
+          {
+            "name": "location",
+            "label": "Location",
+            "type": "text",
+            "placeholder": "e.g., Texas, USA"
+          },
+          {
+            "name": "deliveryMethod",
+            "label": "Delivery Method",
+            "type": "select",
+            "options": [
+              { "label": "Pipeline", "value": "pipeline" },
+              { "label": "Shipped as LNG", "value": "lng" }
+            ],
+            "placeholder": "Select delivery method"
+          },
+          {
+            "name": "flexibilityOfSupply",
+            "label": "Flexibility of Supply",
+            "type": "text",
+            "placeholder": "e.g., High flexibility to increase or decrease output"
+          },
+          {
+            "name": "emissionCreditsOrPenalties",
+            "label": "Emission Credits or Penalties",
+            "type": "text",
+            "placeholder": "e.g., Includes 500 carbon credits"
+          },
+          {
+            "name": "contractLength",
+            "label": "Contract Length",
+            "type": "text",
+            "placeholder": "e.g., 5 years"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "name": "Wind",
+      "formSchema": {
+        "title": "Wind Energy Offering Form",
+        "description": "Enter the details of the wind energy offering.",
+        "fields": [
+          {
+            "name": "price",
+            "label": "Price per unit of energy",
+            "type": "number",
+            "placeholder": "e.g., 120",
+            "unit": "kWh/MWh"
+          },
+          {
+            "name": "minimumPurchaseQuantity",
+            "label": "Minimum Purchase Quantity",
+            "type": "number",
+            "placeholder": "e.g., 50"
+          },
+          {
+            "name": "contractTerms",
+            "label": "Contract Terms",
+            "type": "text",
+            "placeholder": "e.g., 3 years, penalties for early termination"
+          },
+          {
+            "name": "paymentTerms",
+            "label": "Payment Terms",
+            "type": "text",
+            "placeholder": "e.g., Bi-annually, post-delivery"
+          },
+          {
+            "name": "capacity",
+            "label": "Capacity",
+            "type": "number",
+            "placeholder": "e.g., 2000",
+            "unit": "kW/MW"
+          },
+          {
+            "name": "location",
+            "label": "Location",
+            "type": "text",
+            "placeholder": "e.g., Oklahoma, USA"
+          },
+          {
+            "name": "windSpeedPredictions",
+            "label": "Wind Speed Predictions",
+            "type": "text",
+            "placeholder": "e.g., Based on 10-year historical data"
+          },
+          {
+            "name": "turbineEfficiency",
+            "label": "Turbine Efficiency",
+            "type": "number",
+            "placeholder": "e.g., 85",
+            "unit": "%"
+          },
+          {
+            "name": "timeOfAvailability",
+            "label": "Time of Availability",
+            "type": "text",
+            "placeholder": "e.g., Varies with time of day and weather conditions"
+          },
+          {
+            "name": "certifications",
+            "label": "Certifications",
+            "type": "select",
+            "options": [
+              { "label": "Renewable Energy Certificates (RECs)", "value": "REC" },
+              { "label": "Green", "value": "Green" },
+              { "label": "Eco", "value": "Eco" }
+            ],
+            "placeholder": "Select certifications"
+          }
+        ]
+      }
+    },
+    {
+      "id": "4",
+      "name": "Hydro",
+      "formSchema": {
+        "title": "Hydro Energy Offering Form",
+        "description": "Enter the details of the hydro energy offering.",
+        "fields": [
+          {
+            "name": "price",
+            "label": "Price per unit of energy",
+            "type": "number",
+            "placeholder": "e.g., 80",
+            "unit": "kWh/MWh"
+          },
+          {
+            "name": "minimumPurchaseQuantity",
+            "label": "Minimum Purchase Quantity",
+            "type": "number",
+            "placeholder": "e.g., 100"
+          },
+          {
+            "name": "contractTerms",
+            "label": "Contract Terms",
+            "type": "text",
+            "placeholder": "e.g., 5 years, penalties for early termination"
+          },
+          {
+            "name": "paymentTerms",
+            "label": "Payment Terms",
+            "type": "text",
+            "placeholder": "e.g., Annually, post-delivery"
+          },
+          {
+            "name": "capacity",
+            "label": "Capacity",
+            "type": "number",
+            "placeholder": "e.g., 3000",
+            "unit": "kW/MW"
+          },
+          {
+            "name": "waterFlowRate",
+            "label": "Water Flow Rate",
+            "type": "number",
+            "placeholder": "e.g., 500",
+            "unit": "cubic meters per second"
+          },
+          {
+            "name": "reservoirLevel",
+            "label": "Reservoir Level",
+            "type": "number",
+            "placeholder": "e.g., 200",
+            "unit": "meters"
+          },
+          {
+            "name": "regulatoryCompliance",
+            "label": "Regulatory Compliance",
+            "type": "text",
+            "placeholder": "e.g., Complies with local environmental regulations"
+          },
+          {
+            "name": "flexibilityOfSupply",
+            "label": "Flexibility of Supply",
+            "type": "text",
+            "placeholder": "e.g., High flexibility to ramp up or down based on demand"
+          },
+          {
+            "name": "energyStorage",
+            "label": "Energy Storage",
+            "type": "text",
+            "placeholder": "e.g., Capacity to store 1000 MWh of energy"
+          }
+        ]
+      }
+    },
+    {
+      "id": "5",
+      "name": "Kinetic",
+      "formSchema": {
+        "title": "Kinetic Energy Offering Form",
+        "description": "Enter the details of the kinetic energy offering.",
+        "fields": [
+          {
+            "name": "price",
+            "label": "Price per unit of energy",
+            "type": "number",
+            "placeholder": "e.g., 200",
+            "unit": "kWh/MWh"
+          },
+          {
+            "name": "minimumPurchaseQuantity",
+            "label": "Minimum Purchase Quantity",
+            "type": "number",
+            "placeholder": "e.g., 5"
+          },
+          {
+            "name": "contractTerms",
+            "label": "Contract Terms",
+            "type": "text",
+            "placeholder": "e.g., 2 years, penalties for early termination"
+          },
+          {
+            "name": "paymentTerms",
+            "label": "Payment Terms",
+            "type": "text",
+            "placeholder": "e.g., Upon delivery"
+          },
+          {
+            "name": "capacity",
+            "label": "Capacity",
+            "type": "number",
+            "placeholder": "e.g., 50",
+            "unit": "kW"
+          },
+          {
+            "name": "location",
+            "label": "Location",
+            "type": "text",
+            "placeholder": "e.g., Urban pedestrian zone"
+          },
+          {
+            "name": "energyConversionEfficiency",
+            "label": "Energy Conversion Efficiency",
+            "type": "number",
+            "placeholder": "e.g., 60",
+            "unit": "%"
+          },
+          {
+            "name": "predictabilityOfSource",
+            "label": "Predictability of Source",
+            "type": "text",
+            "placeholder": "e.g., High during business hours"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6",
+      "name": "Thermal",
+      "formSchema": {
+        "title": "Thermal Energy Offering Form",
+        "description": "Enter the details of the thermal energy offering.",
+        "fields": [
+          {
+            "name": "price",
+            "label": "Price per unit of energy",
+            "type": "number",
+            "placeholder": "e.g., 250",
+            "unit": "kWh/MWh"
+          },
+          {
+            "name": "minimumPurchaseQuantity",
+            "label": "Minimum Purchase Quantity",
+            "type": "number",
+            "placeholder": "e.g., 20"
+          },
+          {
+            "name": "contractTerms",
+            "label": "Contract Terms",
+            "type": "text",
+            "placeholder": "e.g., 10 years, penalties for early termination"
+          },
+          {
+            "name": "paymentTerms",
+            "label": "Payment Terms",
+            "type": "text",
+            "placeholder": "e.g., Semi-annually, post-delivery"
+          },
+          {
+            "name": "capacity",
+            "label": "Capacity",
+            "type": "number",
+            "placeholder": "e.g., 5000",
+            "unit": "kW/MW"
+          },
+          {
+            "name": "heatSourceStability",
+            "label": "Heat Source Stability",
+            "type": "text",
+            "placeholder": "e.g., High stability over 20 years"
+          },
+          {
+            "name": "temperatureGradient",
+            "label": "Temperature Gradient",
+            "type": "number",
+            "placeholder": "e.g., 75",
+            "unit": "degrees Celsius per kilometer"
+          },
+          {
+            "name": "conversionEfficiency",
+            "label": "Conversion Efficiency",
+            "type": "number",
+            "placeholder": "e.g., 80",
+            "unit": "%"
+          },
+          {
+            "name": "location",
+            "label": "Location",
+            "type": "text",
+            "placeholder": "e.g., Iceland for geothermal"
+          },
+          {
+            "name": "environmentalImpactAndRegulation",
+            "label": "Environmental Impact and Regulation",
+            "type": "text",
+            "placeholder": "e.g., Complies with all local environmental regulations"
+          }
+        ]
+      }
+    }
+  ]
 }

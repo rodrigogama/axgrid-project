@@ -13,10 +13,17 @@ const port = 3000;
 const router = jsonServer.router(path.join(__dirname, 'db.json'));
 const middlewares = jsonServer.defaults();
 
+// custom api routes
+const customRoutes = {
+  '/api/energy-types': '/energyTypes',
+  '/api/energy-types/:id/offering-form': '/energyTypeFormSchema/:id',
+};
+
 // use default middlewares
 app.use(middlewares);
 app.use(jsonServer.bodyParser); // handle POST, PUT and PATCH
-app.use('/api', router); // serve json-server under /api route
+app.use(jsonServer.rewriter(customRoutes));
+app.use(router);
 
 io.on('connection', (socket) => {
   console.log('a user connected');
