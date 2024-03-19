@@ -1,11 +1,29 @@
 {
   "energyTypes": [
-    { "id": "1", "name": "Solar" },
-    { "id": "2", "name": "Gas" },
-    { "id": "3", "name": "Wind" },
-    { "id": "4", "name": "Hydro" },
-    { "id": "5", "name": "Kinetic" },
-    { "id": "6", "name": "Thermal" }
+    {
+      "id": "1",
+      "name": "Solar"
+    },
+    {
+      "id": "2",
+      "name": "Gas"
+    },
+    {
+      "id": "3",
+      "name": "Wind"
+    },
+    {
+      "id": "4",
+      "name": "Hydro"
+    },
+    {
+      "id": "5",
+      "name": "Kinetic"
+    },
+    {
+      "id": "6",
+      "name": "Thermal"
+    }
   ],
   "energyTypeFormSchema": [
     {
@@ -70,9 +88,18 @@
             "label": "Certifications",
             "type": "select",
             "options": [
-              { "label": "Renewable Energy Certificates (RECs)", "value": "REC" },
-              { "label": "Green", "value": "Green" },
-              { "label": "Eco", "value": "Eco" }
+              {
+                "label": "Renewable Energy Certificates (RECs)",
+                "value": "REC"
+              },
+              {
+                "label": "Green",
+                "value": "Green"
+              },
+              {
+                "label": "Eco",
+                "value": "Eco"
+              }
             ],
             "placeholder": "Select certifications"
           }
@@ -129,8 +156,14 @@
             "label": "Delivery Method",
             "type": "select",
             "options": [
-              { "label": "Pipeline", "value": "pipeline" },
-              { "label": "Shipped as LNG", "value": "lng" }
+              {
+                "label": "Pipeline",
+                "value": "pipeline"
+              },
+              {
+                "label": "Shipped as LNG",
+                "value": "lng"
+              }
             ],
             "placeholder": "Select delivery method"
           },
@@ -224,9 +257,18 @@
             "label": "Certifications",
             "type": "select",
             "options": [
-              { "label": "Renewable Energy Certificates (RECs)", "value": "REC" },
-              { "label": "Green", "value": "Green" },
-              { "label": "Eco", "value": "Eco" }
+              {
+                "label": "Renewable Energy Certificates (RECs)",
+                "value": "REC"
+              },
+              {
+                "label": "Green",
+                "value": "Green"
+              },
+              {
+                "label": "Eco",
+                "value": "Eco"
+              }
             ],
             "placeholder": "Select certifications"
           }
@@ -442,5 +484,6 @@
         ]
       }
     }
-  ]
+  ],
+  "energyOfferings": []
 }

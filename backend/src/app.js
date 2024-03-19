@@ -17,6 +17,7 @@ const middlewares = jsonServer.defaults();
 const customRoutes = {
   '/api/energy-types': '/energyTypes',
   '/api/energy-types/:id/offering-form': '/energyTypeFormSchema/:id',
+  '/api/energy-offerings': '/energyOfferings',
 };
 
 // use default middlewares
