@@ -11,7 +11,7 @@ const noResponseHandler = http.get(url, () => {
   return HttpResponse.json(null);
 });
 
-const errorHandler = http.post(url, () => {
+const errorHandler = http.get(url, () => {
   return new HttpResponse(null, {
     status: 400,
     statusText: "Internal server error",
