@@ -1,0 +1,47 @@
+.alert__info {
+  @apply border-blue-400 bg-blue-50;
+}
+
+.alert-icon__info {
+  @apply text-blue-400;
+}
+
+.alert-text__info {
+  @apply text-blue-700;
+}
+
+.alert__danger {
+  @apply border-red-400 bg-red-50;
+}
+
+.alert-icon__danger {
+  @apply text-red-400;
+}
+
+.alert-text__danger {
+  @apply text-red-700;
+}
+
+.alert__success {
+  @apply border-green-400 bg-green-50;
+}
+
+.alert-icon__success {
+  @apply text-green-400;
+}
+
+.alert-text__success {
+  @apply text-green-700;
+}
+
+.alert__warn {
+  @apply border-yellow-400 bg-yellow-50;
+}
+
+.alert-icon__warn {
+  @apply text-yellow-400;
+}
+
+.alert-text__warn {
+  @apply text-yellow-700;
+}
