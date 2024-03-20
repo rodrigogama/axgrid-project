@@ -1,17 +1,4 @@
-import { IGasEnergy } from "../../../domains/gas";
-import { IHydroEnergy } from "../../../domains/hydro";
-import { IKineticEnergy } from "../../../domains/kinetic";
-import { ISolarEnergy } from "../../../domains/solar";
-import { IThermalEnergy } from "../../../domains/thermal";
-import { IWindEnergy } from "../../../domains/wind";
-
-export type EnergyFormFields =
-  | ISolarEnergy
-  | IWindEnergy
-  | IHydroEnergy
-  | IGasEnergy
-  | IKineticEnergy
-  | IThermalEnergy;
+import { EnergyFormFields } from "../../../domains/common/formFields";
 
 export type EnergyOfferingRequest = {
   energyTypeId: EnergyFormFields["id"];
