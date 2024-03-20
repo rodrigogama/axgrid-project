@@ -1,14 +1,16 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { publicRoutes } from "./routes";
+import { protectedRoutes } from "./routes";
+
+const defaultRoute = protectedRoutes.find((route) => route.default)!;
 
 export const AppRoutes = () => {
   return (
     <Routes>
-      {publicRoutes.map(({ path, pageElement: PageElement }) => (
+      {protectedRoutes.map(({ path, pageElement: PageElement }) => (
         <Route key={path} path={path} element={<PageElement />} />
       ))}
 
-      <Route index element={<Navigate to="/energy-offerings" replace />} />
+      <Route index element={<Navigate to={defaultRoute.path} replace />} />
     </Routes>
   );
 };

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { publicRoutes } from "../../routes";
+import { protectedRoutes } from "../../routes";
 import { Navbar } from "./Navbar";
 
 describe("[components]: Navbar", () => {
@@ -8,7 +8,7 @@ describe("[components]: Navbar", () => {
     vi.clearAllMocks();
   });
 
-  publicRoutes.forEach((route) => {
+  protectedRoutes.forEach((route) => {
     it(`should highlight the "${route.displayName}" item when on ${route.path}`, () => {
       const useLocationMock = vi.fn().mockReturnValue({ pathname: route.path });
 

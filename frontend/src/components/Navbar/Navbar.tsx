@@ -1,13 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
-import { publicRoutes } from "../../routes";
+import { protectedRoutes } from "../../routes";
 
 export const Navbar = () => {
   const { pathname } = useLocation();
 
   return (
     <nav className="flex h-16 items-center border-b border-gray-700 space-x-4">
-      {publicRoutes.map((route) => (
+      {protectedRoutes.map((route) => (
         <Link
           key={route.id}
           to={route.path}
