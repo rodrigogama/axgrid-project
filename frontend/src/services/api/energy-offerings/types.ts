@@ -5,7 +5,7 @@ import { ISolarEnergy } from "../../../domains/solar";
 import { IThermalEnergy } from "../../../domains/thermal";
 import { IWindEnergy } from "../../../domains/wind";
 
-type EnergyFormFields =
+export type EnergyFormFields =
   | ISolarEnergy
   | IWindEnergy
   | IHydroEnergy

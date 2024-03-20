@@ -1,7 +1,7 @@
 import {
   EnergyOfferingRequest,
   EnergyOfferingResponse,
-} from "../../services/api/energy-offerings/types";
+} from "../../services/api/energy-offerings";
 
 export const EnergyOfferingRequestMock: EnergyOfferingRequest = {
   energyTypeId: "1",
