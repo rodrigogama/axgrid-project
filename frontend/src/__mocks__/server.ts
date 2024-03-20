@@ -1,8 +1,13 @@
 import { setupServer } from "msw/node";
-import { getEnergyTypesHandler, postEnergyOfferingHandler } from "./handlers";
+import {
+  getEnergyTypesHandler,
+  getEnergyFormHandler,
+  postEnergyOfferingHandler,
+} from "./handlers";
 
 const handlers = [
   getEnergyTypesHandler.defaultHandler,
+  getEnergyFormHandler.defaultHandler,
   postEnergyOfferingHandler.defaultHandler,
 ];
 
