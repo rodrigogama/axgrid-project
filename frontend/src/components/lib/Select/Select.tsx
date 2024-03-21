@@ -27,7 +27,7 @@ export const Select = ({
   return (
     <Menu
       as="div"
-      className={clsx("relative inline-block text-left min-w-max", className)}
+      className={clsx("relative inline-block text-left w-full", className)}
     >
       <Menu.Button
         disabled={disabled}

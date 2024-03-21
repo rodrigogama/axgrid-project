@@ -18,7 +18,7 @@ export const PageShell = ({
           </div>
 
           <header className="py-10">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-6">
               <h1 className="text-3xl font-bold tracking-tight text-white">
                 {title}
               </h1>
@@ -27,7 +27,7 @@ export const PageShell = ({
         </div>
 
         <main className="-mt-32">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-6 py-6">
             <div className="rounded-lg bg-white px-5 py-6 shadow sm:px-6">
               {isLoading && (
                 <div role="status" className="flex items-center justify-center">
