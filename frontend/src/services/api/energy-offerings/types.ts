@@ -1,8 +1,11 @@
-import { EnergyFormFields } from "../../../domains/common/formFields";
+import {
+  EnergyFormFields,
+  EnergyFormSchemas,
+} from "../../../domains/common/formFields";
 
 export type EnergyOfferingRequest = {
-  energyTypeId: EnergyFormFields["id"];
-  fields: EnergyFormFields["formSchema"];
+  energyTypeId: EnergyFormSchemas["id"];
+  fields: EnergyFormFields;
 };
 
 export type EnergyOfferingResponse = {
