@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AppRoutes } from "./routes";
+import { EnergyTypeProvider } from "./shared/contexts/EnergyTypeContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,9 +16,11 @@ const queryClient = new QueryClient({
 export const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
+      <EnergyTypeProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </EnergyTypeProvider>
     </QueryClientProvider>
   );
 };

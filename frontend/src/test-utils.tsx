@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { render, RenderOptions } from "@testing-library/react";
 import { renderHook } from "@testing-library/react-hooks";
+import { EnergyTypeProvider } from "./shared/contexts/EnergyTypeContext";
 
 interface RenderQueryHookOptions {
   queryClient?: QueryClient;
@@ -24,7 +25,9 @@ export function renderQueryHook<T>(
   const client = queryClient || new QueryClient(defaultTestQueryClientOptions);
 
   const wrapper = ({ children }: { children: ReactNode }) => (
-    <QueryClientProvider client={client}>{children}</QueryClientProvider>
+    <QueryClientProvider client={client}>
+      <EnergyTypeProvider>{children}</EnergyTypeProvider>
+    </QueryClientProvider>
   );
 
   return renderHook(hook, { wrapper });
@@ -39,7 +42,9 @@ export const renderWithProviders = (
 
   return {
     ...render(
-      <QueryClientProvider client={client}>{ui}</QueryClientProvider>,
+      <QueryClientProvider client={client}>
+        <EnergyTypeProvider>{ui}</EnergyTypeProvider>
+      </QueryClientProvider>,
       options
     ),
   };
