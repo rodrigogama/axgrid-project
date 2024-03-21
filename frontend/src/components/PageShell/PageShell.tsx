@@ -28,7 +28,7 @@ export const PageShell = ({
 
         <main className="-mt-32">
           <div className="mx-auto max-w-7xl px-6 py-6">
-            <div className="rounded-lg bg-white px-5 py-6 shadow sm:px-6">
+            <div className="min-h-56 rounded-lg bg-white px-5 py-6 shadow sm:px-6">
               {isLoading && (
                 <div role="status" className="flex items-center justify-center">
                   <Spinner />

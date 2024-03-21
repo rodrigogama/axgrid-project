@@ -12,13 +12,15 @@ export interface ICommonFormFields {
   paymentTerms: string;
 }
 
-export type EnergyFormFields =
+export type EnergyFormSchemas =
   | ISolarEnergy
   | IWindEnergy
   | IHydroEnergy
   | IGasEnergy
   | IKineticEnergy
   | IThermalEnergy;
+
+export type EnergyFormFields = EnergyFormSchemas["formSchema"];
 
 export interface IBaseField {
   name: string;
@@ -37,3 +39,9 @@ export interface ISelectField extends IBaseField {
 }
 
 export type FormField = IBaseField | ISelectField;
+
+export type FormSchema = {
+  title: string;
+  description: string;
+  fields: FormField[];
+};
