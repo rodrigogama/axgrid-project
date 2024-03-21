@@ -1,2 +1,5 @@
 /* lib components */
 @import "../components/lib/Alert/Alert.css";
+@import "../components/lib/Button/Button.css";
+@import "../components/lib/TextArea/TextArea.css";
+@import "../components/lib/TextInput/TextInput.css";
