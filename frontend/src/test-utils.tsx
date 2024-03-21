@@ -1,6 +1,7 @@
-import { ReactElement, ReactNode } from "react";
+import { PropsWithChildren, ReactElement, ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { FormProvider, useForm } from "react-hook-form";
 import { render, RenderOptions } from "@testing-library/react";
 import { renderHook } from "@testing-library/react-hooks";
 import { EnergyTypeProvider } from "./shared/contexts/EnergyTypeContext";
@@ -16,6 +17,11 @@ const defaultTestQueryClientOptions = {
       staleTime: Infinity,
     },
   },
+};
+
+const HookFormProvider = ({ children }: PropsWithChildren) => {
+  const methods = useForm();
+  return <FormProvider {...methods}>{children}</FormProvider>;
 };
 
 export function renderQueryHook<T>(
@@ -43,7 +49,9 @@ export const renderWithProviders = (
   return {
     ...render(
       <QueryClientProvider client={client}>
-        <EnergyTypeProvider>{ui}</EnergyTypeProvider>
+        <EnergyTypeProvider>
+          <HookFormProvider>{ui}</HookFormProvider>
+        </EnergyTypeProvider>
       </QueryClientProvider>,
       options
     ),
