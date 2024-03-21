@@ -1,11 +1,11 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderWithProviders } from "../../test-utils";
-import { FormSchema } from "../../domains/common/formFields";
-import { DynamicForm } from "./DynamicForm";
-import * as useCreateEnergyOffering from "../../shared/hooks/useCreateEnergyOffering";
-import * as useSelectedEnergyType from "../../shared/hooks/useSelectedEnergyType";
 import { EnergyTypesResponseMock } from "../../__mocks__/data/energyTypes";
+import { FormSchema } from "../../domains/common/formFields";
+import * as useSelectedEnergyType from "../../shared/hooks/useSelectedEnergyType";
+import { EnergyOfferingService } from "../../services/api/energy-offerings";
+import { DynamicForm } from "./DynamicForm";
 
 const formSchemaMock: FormSchema = {
   title: "Thermal Energy Offering Form",
@@ -34,25 +34,15 @@ const expectedInputValues: { [key: string]: string } = {
 };
 
 describe("[components]: DynamicForm", () => {
-  const onCreateMock = vi.fn();
   const alertMock = vi.fn();
+
   const useSelectedEnergyTypeSpy = vi.spyOn(
     useSelectedEnergyType,
     "useSelectedEnergyType"
   );
 
-  const useCreateEnergyOfferingSpy = vi.spyOn(
-    useCreateEnergyOffering,
-    "useCreateEnergyOffering"
-  );
-
   beforeEach(() => {
     window.alert = alertMock;
-
-    // @ts-expect-error ts-2345
-    useCreateEnergyOfferingSpy.mockReturnValue({
-      onCreate: onCreateMock,
-    });
 
     useSelectedEnergyTypeSpy.mockReturnValue({
       selectedEnergyType: selectedEnergyTypeMock,
@@ -82,11 +72,10 @@ describe("[components]: DynamicForm", () => {
   });
 
   it("should submit the form and clear it on success", async () => {
+    const serviceSpy = vi.spyOn(EnergyOfferingService, "save");
     const expected = {
-      data: {
-        energyTypeId: selectedEnergyTypeMock.id,
-        fields: expectedInputValues,
-      },
+      energyTypeId: selectedEnergyTypeMock.id,
+      fields: expectedInputValues,
     };
 
     renderWithProviders(<DynamicForm formSchema={formSchemaMock} />);
@@ -99,7 +88,26 @@ describe("[components]: DynamicForm", () => {
 
     const submitButton = screen.getByText("Create offer");
     await userEvent.click(submitButton);
-    expect(onCreateMock).toHaveBeenCalledWith(expected, expect.anything());
+
+    expect(serviceSpy).toHaveBeenCalledWith(expected);
+    expect(alertMock).toHaveBeenCalledWith(
+      `${selectedEnergyTypeMock.name} energy offering created succesfully!`
+    );
+
+    for (const field of formSchemaMock.fields) {
+      const input = screen.getByPlaceholderText(field.placeholder!);
+      expect(input).toHaveValue("");
+    }
+  });
+
+  it("should clear the form fields when clicking on Clear button", async () => {
+    renderWithProviders(<DynamicForm formSchema={formSchemaMock} />);
+
+    for (const field of formSchemaMock.fields) {
+      const input = screen.getByPlaceholderText(field.placeholder!);
+      const inputValue = expectedInputValues[field.name];
+      await userEvent.type(input, inputValue);
+    }
 
     const clearButton = screen.getByText("Clear form");
     await userEvent.click(clearButton);
