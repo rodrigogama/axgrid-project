@@ -22,3 +22,8 @@ export const EnergyOfferingResponseMock: EnergyOfferingResponse = {
   id: 123,
   ...EnergyOfferingRequestMock,
 };
+
+export const EnergyOfferingListResponseMock: EnergyOfferingResponse[] = [
+  EnergyOfferingResponseMock,
+  { ...EnergyOfferingResponseMock, energyTypeId: "2", id: 321 },
+];
