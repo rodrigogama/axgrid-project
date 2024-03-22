@@ -1,13 +1,13 @@
 .btn {
-  @apply rounded-md px-3 py-2 text-sm font-semibold  shadow-sm;
+  @apply rounded-md px-3 py-2 text-sm font-semibold;
 }
 
 .btn__primary {
-  @apply bg-indigo-600 text-white hover:bg-indigo-500 focus-visible:outline-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+  @apply shadow-sm bg-indigo-600 text-white hover:bg-indigo-500 focus-visible:outline-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
 }
 
 .btn__secondary {
-  @apply text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50;
+  @apply shadow-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50;
 }
 
 .btn__link {
