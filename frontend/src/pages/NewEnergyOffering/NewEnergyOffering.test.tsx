@@ -3,17 +3,12 @@ import userEvent from "@testing-library/user-event";
 import { renderWithRouterAndProviders } from "../../test-utils";
 import { EnergyTypesResponseMock } from "../../__mocks__/data/energyTypes";
 import { server } from "../../__mocks__/server";
-import { FormSchema } from "../../domains/common/formFields";
-import * as useSelectedEnergyType from "../../shared/hooks/useSelectedEnergyType";
-import { EnergyOfferingService } from "../../services/api/energy-offerings";
 import { NewEnergyOffering } from "./NewEnergyOffering";
 import {
   getEnergyFormHandler,
   getEnergyTypesHandler,
 } from "../../__mocks__/handlers";
 import { EnergyFormResponseMock } from "../../__mocks__/data/energyForm";
-
-const selectedEnergyTypeMock = EnergyTypesResponseMock[0];
 
 describe("[pages]: New Energy Offering", () => {
   beforeEach(() => {
