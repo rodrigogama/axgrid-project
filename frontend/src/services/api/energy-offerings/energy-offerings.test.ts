@@ -1,5 +1,6 @@
 import { api } from "../../../infrastructure/http";
 import {
+  EnergyOfferingListResponseMock,
   EnergyOfferingRequestMock,
   EnergyOfferingResponseMock,
 } from "../../../__mocks__/data/energyOfferings";
@@ -10,7 +11,18 @@ describe("[Services]: Energy Offerings", () => {
     vi.clearAllMocks();
   });
 
-  it("should fetch post an energy offering correctly", async () => {
+  it("should fetch all energy offerings correctly", async () => {
+    const serviceSpy = vi.spyOn(EnergyOfferingService, "getAll");
+    const httpSpy = vi.spyOn(api, "get");
+
+    const result = await EnergyOfferingService.getAll();
+
+    expect(serviceSpy).toHaveBeenCalled();
+    expect(httpSpy).toHaveBeenCalledWith("/energy-offerings");
+    expect(result).toEqual(EnergyOfferingListResponseMock);
+  });
+
+  it("should post an energy offering correctly", async () => {
     const serviceSpy = vi.spyOn(EnergyOfferingService, "save");
     const httpSpy = vi.spyOn(api, "post");
 

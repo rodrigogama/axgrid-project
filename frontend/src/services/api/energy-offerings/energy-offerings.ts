@@ -2,6 +2,12 @@ import { api } from "../../../infrastructure/http";
 import { EnergyOfferingRequest, EnergyOfferingResponse } from "./types";
 
 class EnergyOfferingService {
+  async getAll(): Promise<EnergyOfferingResponse[]> {
+    return api
+      .get<EnergyOfferingResponse[]>("/energy-offerings")
+      .then((response) => response.data);
+  }
+
   async save(request: EnergyOfferingRequest): Promise<EnergyOfferingResponse> {
     const { energyTypeId, fields } = request;
     return api
