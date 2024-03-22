@@ -39,7 +39,7 @@ export const EnergyTypesFilter = ({ options, onSelect }: Props) => {
       className="border-b border-t border-gray-200"
     >
       <div className="relative col-start-1 row-start-1 py-4">
-        <div className="mx-auto flex max-w-7xl space-x-6 divide-x divide-gray-200 px-4 text-sm sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl space-x-6 divide-x divide-gray-200 text-sm">
           <div className="flex items-center">
             <Disclosure.Button className="group flex items-center font-medium text-gray-700">
               <FunnelIcon
@@ -61,32 +61,28 @@ export const EnergyTypesFilter = ({ options, onSelect }: Props) => {
         </div>
       </div>
       <Disclosure.Panel className="border-t border-gray-200 py-5">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-4 px-4 text-sm sm:px-6 md:gap-x-6 lg:px-8">
-          <div className="grid auto-rows-min grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-6">
-            <fieldset>
-              <legend className="block font-medium">Energy types</legend>
-              <div className="space-y-6 pt-6 sm:space-y-4 sm:pt-4">
-                {options.map((option) => (
-                  <div
-                    key={option.id}
-                    className="flex items-center text-base sm:text-sm"
-                  >
-                    <Checkbox
-                      label={option.name}
-                      value={option.id}
-                      checked={selectedOptions.some(
-                        (selected) => selected.id === option.id
-                      )}
-                      onChange={(event) =>
-                        handleOnSelect(option, event.target.checked)
-                      }
-                    />
-                  </div>
-                ))}
+        <fieldset>
+          <legend className="block font-medium">Energy types</legend>
+          <div className="space-y-6 pt-6 sm:space-y-4 sm:pt-4">
+            {options.map((option) => (
+              <div
+                key={option.id}
+                className="flex items-center text-base sm:text-sm"
+              >
+                <Checkbox
+                  label={option.name}
+                  value={option.id}
+                  checked={selectedOptions.some(
+                    (selected) => selected.id === option.id
+                  )}
+                  onChange={(event) =>
+                    handleOnSelect(option, event.target.checked)
+                  }
+                />
               </div>
-            </fieldset>
+            ))}
           </div>
-        </div>
+        </fieldset>
       </Disclosure.Panel>
     </Disclosure>
   );
