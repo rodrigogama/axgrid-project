@@ -1,4 +1,6 @@
-export const Checkbox = ({ label, value, checked, onChange }: Props) => {
+import clsx from "clsx";
+
+export const Checkbox = ({ label, value, className, ...props }: Props) => {
   return (
     <div className="flex items-center">
       <input
@@ -6,9 +8,11 @@ export const Checkbox = ({ label, value, checked, onChange }: Props) => {
         name={value}
         defaultValue={value}
         type="checkbox"
-        checked={checked}
-        className="h-4 w-4 rounded border-gray-300 text-indigo-500 focus:ring-indigotext-indigo-500 cursor-pointer"
-        onChange={onChange}
+        className={clsx(
+          "h-4 w-4 rounded border-gray-300 text-indigo-500 focus:ring-indigotext-indigo-500 cursor-pointer",
+          className
+        )}
+        {...props}
       />
       <label
         htmlFor={`checkbox-${value}`}
@@ -23,6 +27,4 @@ export const Checkbox = ({ label, value, checked, onChange }: Props) => {
 type Props = {
   label: string;
   value: string;
-  checked?: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
