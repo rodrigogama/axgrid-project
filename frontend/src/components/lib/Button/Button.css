@@ -13,3 +13,7 @@
 .btn__link {
   @apply text-indigo-600 hover:text-indigo-900;
 }
+
+.btn__disabled {
+  @apply cursor-not-allowed bg-indigo-300 hover:bg-indigo-300;
+}
