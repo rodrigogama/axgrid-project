@@ -20,6 +20,7 @@ export const EnergyOfferingRequestMock: EnergyOfferingRequest = {
 
 export const EnergyOfferingResponseMock: EnergyOfferingResponse = {
   id: 123,
+  status: "PENDING",
   ...EnergyOfferingRequestMock,
 };
 

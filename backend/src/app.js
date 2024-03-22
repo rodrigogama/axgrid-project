@@ -20,9 +20,18 @@ const customRoutes = {
   '/api/energy-offerings': '/energyOfferings',
 };
 
+const saveEnergyOfferingMiddleware = (req, res, next) => {
+  if (req.method === 'POST' && req.path === '/api/energy-offerings') {
+    req.body.status = 'PENDING';
+  }
+
+  next();
+};
+
 // use default middlewares
 app.use(middlewares);
 app.use(jsonServer.bodyParser); // handle POST, PUT and PATCH
+app.use(saveEnergyOfferingMiddleware);
 app.use(jsonServer.rewriter(customRoutes));
 app.use(router);
 

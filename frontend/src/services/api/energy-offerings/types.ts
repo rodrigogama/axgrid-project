@@ -10,4 +10,5 @@ export type EnergyOfferingRequest = {
 
 export type EnergyOfferingResponse = {
   id: number;
+  status: "PENDING" | "ACCEPTED" | "OPEN";
 } & EnergyOfferingRequest;
