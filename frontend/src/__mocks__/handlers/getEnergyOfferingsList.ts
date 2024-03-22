@@ -7,6 +7,10 @@ const defaultHandler = http.get(url, () => {
   return HttpResponse.json(EnergyOfferingListResponseMock);
 });
 
+const noResponseHandler = http.get(url, () => {
+  return HttpResponse.json(null);
+});
+
 const errorHandler = http.get(url, () => {
   return new HttpResponse(null, {
     status: 400,
@@ -16,5 +20,6 @@ const errorHandler = http.get(url, () => {
 
 export const getEnergyOfferingsListHandler = {
   defaultHandler,
+  noResponseHandler,
   errorHandler,
 };
