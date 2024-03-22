@@ -5,6 +5,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { render, RenderOptions } from "@testing-library/react";
 import { renderHook } from "@testing-library/react-hooks";
 import { EnergyTypeProvider } from "./shared/contexts/EnergyTypeContext";
+import { EnergyOfferingProvider } from "./shared/contexts/EnergyOfferingContext";
 
 interface RenderQueryHookOptions {
   queryClient?: QueryClient;
@@ -32,7 +33,9 @@ export function renderQueryHook<T>(
 
   const wrapper = ({ children }: { children: ReactNode }) => (
     <QueryClientProvider client={client}>
-      <EnergyTypeProvider>{children}</EnergyTypeProvider>
+      <EnergyTypeProvider>
+        <EnergyOfferingProvider>{children}</EnergyOfferingProvider>
+      </EnergyTypeProvider>
     </QueryClientProvider>
   );
 
@@ -50,7 +53,9 @@ export const renderWithProviders = (
     ...render(
       <QueryClientProvider client={client}>
         <EnergyTypeProvider>
-          <HookFormProvider>{ui}</HookFormProvider>
+          <EnergyOfferingProvider>
+            <HookFormProvider>{ui}</HookFormProvider>
+          </EnergyOfferingProvider>
         </EnergyTypeProvider>
       </QueryClientProvider>,
       options
