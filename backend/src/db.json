@@ -485,5 +485,56 @@
       }
     }
   ],
-  "energyOfferings": []
+  "energyOfferings": [
+    {
+      "energyTypeId": "1",
+      "fields": {
+        "price": 100,
+        "minimumPurchaseQuantity": 10,
+        "contractTerms": "1 year, penalties apply for early termination",
+        "paymentTerms": "Monthly, post-delivery",
+        "capacity": 500,
+        "location": "California, USA",
+        "energyOutputPredictions": "Based on historical data and weather forecasts",
+        "timeOfAvailability": "Daylight hours",
+        "certifications": ["REC"]
+      },
+      "status": "PROCESSING",
+      "id": 1
+    },
+    {
+      "energyTypeId": "2",
+      "fields": {
+        "price": "150",
+        "minimumPurchaseQuantity": "20",
+        "contractTerms": "2 years",
+        "paymentTerms": "Quarterly, post-delivery",
+        "capacity": "1500",
+        "location": "Texas, USA",
+        "flexibilityOfSupply": "High flexibility to increase input",
+        "emissionCreditsOrPenalties": "No penalties",
+        "contractLength": "10 years",
+        "deliveryMethod": "lng"
+      },
+      "status": "PROCESSING",
+      "id": 2
+    },
+    {
+      "energyTypeId": "2",
+      "fields": {
+        "price": "900",
+        "minimumPurchaseQuantity": "1000",
+        "contractTerms": "5 years + 10% increase after each year",
+        "paymentTerms": "50% pre-delivery. Monthly, post-delivery",
+        "capacity": "1240",
+        "location": "Colorado, USA",
+        "flexibilityOfSupply": "n/a",
+        "emissionCreditsOrPenalties": "Includes 500 carbon credits",
+        "contractLength": "20 years",
+        "deliveryMethod": "pipeline"
+      },
+      "status": "ACCEPTED",
+      "id": 3
+    }
+  ]
 }
