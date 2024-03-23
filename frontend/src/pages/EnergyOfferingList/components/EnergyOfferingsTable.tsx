@@ -6,7 +6,7 @@ import { Button } from "../../../components/lib/Button";
 
 const statusesVariants: { [k: string]: BadgeProps["variant"] } = {
   OPEN: "info",
-  PENDING: "warn",
+  PROCESSING: "warn",
   ACCEPTED: "success",
 };
 
