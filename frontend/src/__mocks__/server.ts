@@ -4,6 +4,7 @@ import {
   getEnergyFormHandler,
   getEnergyOfferingsListHandler,
   postEnergyOfferingHandler,
+  updateEnergyOfferingHandler,
 } from "./handlers";
 
 const handlers = [
@@ -11,6 +12,7 @@ const handlers = [
   getEnergyFormHandler.defaultHandler,
   getEnergyOfferingsListHandler.defaultHandler,
   postEnergyOfferingHandler.defaultHandler,
+  updateEnergyOfferingHandler.defaultHandler,
 ];
 
 export const server = setupServer(...handlers);

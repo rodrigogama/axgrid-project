@@ -17,6 +17,12 @@ class EnergyOfferingService {
       )
       .then((response) => response.data);
   }
+
+  async update(id: string): Promise<EnergyOfferingResponse> {
+    return api
+      .post<null, EnergyOfferingResponse>(`/energy-offerings/${id}/buy`, {})
+      .then((response) => response.data);
+  }
 }
 
 const instance = new EnergyOfferingService();

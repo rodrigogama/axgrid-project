@@ -24,6 +24,12 @@ export const EnergyOfferingResponseMock: EnergyOfferingResponse = {
   ...EnergyOfferingRequestMock,
 };
 
+export const UpdateEnergyOfferingResponseMock: EnergyOfferingResponse = {
+  id: 123,
+  status: "PROCESSING",
+  ...EnergyOfferingRequestMock,
+};
+
 export const EnergyOfferingListResponseMock: EnergyOfferingResponse[] = [
   { ...EnergyOfferingResponseMock, energyTypeId: "1", id: 123 },
   { ...EnergyOfferingResponseMock, energyTypeId: "2", id: 321 },
