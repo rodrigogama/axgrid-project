@@ -3,7 +3,7 @@ import { EnergyOfferingService } from "../../../services/api/energy-offerings";
 
 export const useUpdateEnergyOfferingStatus = () => {
   const { mutate, ...mutation } = useMutation({
-    mutationFn: ({ id }: Props) => {
+    mutationFn: (id: number) => {
       return EnergyOfferingService.update(id);
     },
   });
@@ -12,8 +12,4 @@ export const useUpdateEnergyOfferingStatus = () => {
     onUpdate: mutate,
     ...mutation,
   };
-};
-
-type Props = {
-  id: number;
 };
