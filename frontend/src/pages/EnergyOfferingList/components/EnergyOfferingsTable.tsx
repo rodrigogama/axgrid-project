@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { EnergyOfferingResponse } from "../../../services/api/energy-offerings";
 import { useSelectedEnergyOffering } from "../../../shared/hooks/useSelectedEnergyOffering";
 import { Badge, BadgeProps } from "../../../components/lib/Badge";
@@ -11,7 +11,7 @@ const statusesVariants: { [k: string]: BadgeProps["variant"] } = {
 };
 
 export const EnergyOfferingsTable = ({ data, onShowDetailsClick }: Props) => {
-  const { onSelectEnergyOffering } =
+  const { selectedEnergyOffering, onSelectEnergyOffering } =
     useSelectedEnergyOffering<EnergyOfferingRowData>();
 
   const handleDetails = useCallback(
@@ -21,6 +21,16 @@ export const EnergyOfferingsTable = ({ data, onShowDetailsClick }: Props) => {
     },
     [onSelectEnergyOffering, onShowDetailsClick]
   );
+
+  useEffect(() => {
+    // keep in sync updated table data with context data
+    if (selectedEnergyOffering) {
+      const updatedEnergyOffering = data.find(
+        (offering) => offering.id === selectedEnergyOffering.id
+      );
+      onSelectEnergyOffering(updatedEnergyOffering);
+    }
+  }, [data, selectedEnergyOffering, onSelectEnergyOffering]);
 
   return (
     <table className="min-w-full divide-y divide-gray-300">
