@@ -1,6 +1,14 @@
 import clsx from "clsx";
+import { Spinner } from "../Spinner";
 
-export const Button = ({ className, variant, disabled, ...props }: Props) => {
+export const Button = ({
+  children,
+  className,
+  variant,
+  disabled,
+  isLoading,
+  ...props
+}: Props) => {
   return (
     <button
       className={clsx("btn", className, {
@@ -9,12 +17,17 @@ export const Button = ({ className, variant, disabled, ...props }: Props) => {
         btn__link: variant === "link",
         btn__disabled: disabled,
       })}
-      disabled={disabled}
+      disabled={disabled || isLoading}
       {...props}
-    />
+    >
+      {isLoading && <Spinner className="h-5 w-5 mx-auto" />}
+
+      {!isLoading && children}
+    </button>
   );
 };
 
 type Props = {
   variant: "primary" | "secondary" | "link";
+  isLoading?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
