@@ -7,6 +7,7 @@ import { EnergyOfferingRowData } from "./EnergyOfferingsTable";
 import { useGetEnergyForm } from "../../../shared/hooks/useGetEnergyForm";
 import { Spinner } from "../../../components/lib/Spinner";
 import { Button } from "../../../components/lib/Button";
+import { useUpdateEnergyOfferingStatus } from "../../../shared/hooks/useUpdateEnergyOfferingStatus";
 
 const statusesVariants: { [k: string]: BadgeProps["variant"] } = {
   OPEN: "info",
@@ -15,6 +16,8 @@ const statusesVariants: { [k: string]: BadgeProps["variant"] } = {
 };
 
 export const EnergyOfferingSlideOver = ({ isOpen, onClose }: Props) => {
+  const { onUpdate, isLoading: isUpdatingStatus } =
+    useUpdateEnergyOfferingStatus();
   const { selectedEnergyOffering, onSelectEnergyOffering } =
     useSelectedEnergyOffering<EnergyOfferingRowData>();
 
@@ -125,6 +128,10 @@ export const EnergyOfferingSlideOver = ({ isOpen, onClose }: Props) => {
                               disabled={
                                 selectedEnergyOffering?.status !== "OPEN"
                               }
+                              onClick={() =>
+                                onUpdate(selectedEnergyOffering?.id as number)
+                              }
+                              isLoading={isUpdatingStatus}
                             >
                               Buy Energy Offering
                             </Button>
