@@ -1,6 +1,9 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import clsx from "clsx";
+import { socketClient } from "../../../infrastructure/socket";
 import { EnergyOfferingResponse } from "../../../services/api/energy-offerings";
 import { useSelectedEnergyOffering } from "../../../shared/hooks/useSelectedEnergyOffering";
+import { REAL_TIME_EVENT_NAMES } from "../../../shared/constants";
 import { Badge, BadgeProps } from "../../../components/lib/Badge";
 import { Button } from "../../../components/lib/Button";
 
@@ -11,7 +14,8 @@ const statusesVariants: { [k: string]: BadgeProps["variant"] } = {
 };
 
 export const EnergyOfferingsTable = ({ data, onShowDetailsClick }: Props) => {
-  const { selectedEnergyOffering, onSelectEnergyOffering } =
+  const [flashRowId, setFlashRowId] = useState<number | null>(null);
+  const { onSelectEnergyOffering } =
     useSelectedEnergyOffering<EnergyOfferingRowData>();
 
   const handleDetails = useCallback(
@@ -23,14 +27,27 @@ export const EnergyOfferingsTable = ({ data, onShowDetailsClick }: Props) => {
   );
 
   useEffect(() => {
-    // keep in sync updated table data with context data
-    if (selectedEnergyOffering) {
-      const updatedEnergyOffering = data.find(
-        (offering) => offering.id === selectedEnergyOffering.id
-      );
-      onSelectEnergyOffering(updatedEnergyOffering);
+    const handleRowUpdate = (updatedOffering: (typeof data)[number]) => {
+      onSelectEnergyOffering(updatedOffering);
+      setFlashRowId(updatedOffering.id);
+    };
+
+    socketClient.subscribe(
+      REAL_TIME_EVENT_NAMES.STATUS_PROCESSING,
+      handleRowUpdate
+    );
+    socketClient.subscribe(
+      REAL_TIME_EVENT_NAMES.STATUS_ACCEPTED,
+      handleRowUpdate
+    );
+  }, [onSelectEnergyOffering]);
+
+  useEffect(() => {
+    if (flashRowId !== null) {
+      const timer = setTimeout(() => setFlashRowId(null), 2000);
+      return () => clearTimeout(timer);
     }
-  }, [data, selectedEnergyOffering, onSelectEnergyOffering]);
+  }, [flashRowId]);
 
   return (
     <table className="min-w-full divide-y divide-gray-300">
@@ -38,37 +55,37 @@ export const EnergyOfferingsTable = ({ data, onShowDetailsClick }: Props) => {
         <tr>
           <th
             scope="col"
-            className="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+            className="px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
           >
             Energy Type
           </th>
           <th
             scope="col"
-            className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+            className="px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
           >
             Price (kWh, MWh)
           </th>
           <th
             scope="col"
-            className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+            className="px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
           >
             Min. Purchase Quantity
           </th>
           <th
             scope="col"
-            className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+            className="px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
           >
             Contract Terms
           </th>
           <th
             scope="col"
-            className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+            className="px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
           >
             Payment Terms
           </th>
           <th
             scope="col"
-            className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+            className="px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
           >
             Status
           </th>
@@ -81,7 +98,7 @@ export const EnergyOfferingsTable = ({ data, onShowDetailsClick }: Props) => {
       <tbody className="divide-y divide-gray-200 bg-white">
         {data.map((energyOffering) => (
           <tr key={energyOffering.id} data-testid={`row_${energyOffering.id}`}>
-            <td className="py-2 text-sm font-medium text-gray-900">
+            <td className="px-2 py-2 text-sm font-medium text-gray-900">
               {energyOffering.name}
             </td>
             <td className="px-2 py-2 text-sm text-gray-500">
@@ -101,7 +118,12 @@ export const EnergyOfferingsTable = ({ data, onShowDetailsClick }: Props) => {
               {energyOffering.fields.paymentTerms}
             </td>
             <td className="px-2 py-2">
-              <Badge variant={statusesVariants[energyOffering.status]}>
+              <Badge
+                variant={statusesVariants[energyOffering.status]}
+                className={clsx({
+                  "animate-bounce": flashRowId === energyOffering.id,
+                })}
+              >
                 {energyOffering.status}
               </Badge>
             </td>
