@@ -516,7 +516,7 @@
         "contractLength": "10 years",
         "deliveryMethod": "lng"
       },
-      "status": "PROCESSING",
+      "status": "OPEN",
       "id": 2
     },
     {
@@ -533,8 +533,80 @@
         "contractLength": "20 years",
         "deliveryMethod": "pipeline"
       },
-      "status": "ACCEPTED",
+      "status": "OPEN",
       "id": 3
+    },
+    {
+      "energyTypeId": "1",
+      "fields": {
+        "price": "100",
+        "minimumPurchaseQuantity": "10",
+        "contractTerms": "1 year, penalties for early termination",
+        "paymentTerms": "Monthly, post delivery",
+        "capacity": "500",
+        "location": "California, USA",
+        "energyOutputPredictions": "Based on historical data and weather forecasts",
+        "timeOfAvailability": "Daylight hours",
+        "certifications": "REC"
+      },
+      "id": 4,
+      "status": "OPEN"
+    },
+    {
+      "energyTypeId": "2",
+      "fields": {
+        "price": "150",
+        "minimumPurchaseQuantity": "20",
+        "contractTerms": "2 years, penalties for early termination",
+        "paymentTerms": "Quarterly, post-delivery",
+        "capacity": "1000",
+        "location": "Texas, USA",
+        "flexibilityOfSupply": "High flexibility to increase or decrease output",
+        "emissionCreditsOrPenalties": "Includes 500 carbon credits",
+        "contractLength": "5 years",
+        "deliveryMethod": "pipeline"
+      },
+      "id": 5,
+      "status": "OPEN"
+    },
+    {
+      "energyTypeId": "3",
+      "fields": {
+        "price": "120",
+        "minimumPurchaseQuantity": "50",
+        "contractTerms": "3 years, no penalties",
+        "paymentTerms": "Bi-annually",
+        "capacity": "2000",
+        "location": "Oklahoma, USA",
+        "windSpeedPredictions": "Based on 10-year historical data",
+        "turbineEfficiency": "85",
+        "timeOfAvailability": "Varies with time of day and weather conditions",
+        "certifications": "Green"
+      },
+      "id": 6,
+      "status": "OPEN"
+    },
+    {
+      "energyTypeId": "4",
+      "fields": {
+        "price": "80",
+        "minimumPurchaseQuantity": "100",
+        "contractTerms": "15 years",
+        "paymentTerms": "Annually, post-delivery",
+        "capacity": "3000",
+        "heatSourceStability": "",
+        "temperatureGradient": "",
+        "conversionEfficiency": "",
+        "location": "",
+        "environmentalImpactAndRegulation": "",
+        "waterFlowRate": "500",
+        "reservoirLevel": "200",
+        "regulatoryCompliance": "Complies with environmental regulations",
+        "flexibilityOfSupply": "High flexibility to ramp up or down based on conditions",
+        "energyStorage": "Capacity to store 1000 MWh of energy"
+      },
+      "id": 7,
+      "status": "OPEN"
     }
   ]
 }
