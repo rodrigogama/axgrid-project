@@ -10,7 +10,7 @@ import { Button } from "../../../components/lib/Button";
 const statusesVariants: { [k: string]: BadgeProps["variant"] } = {
   OPEN: "info",
   PROCESSING: "warn",
-  ACCEPTED: "success",
+  COMPLETED: "success",
 };
 
 export const EnergyOfferingsTable = ({ data, onShowDetailsClick }: Props) => {
@@ -37,7 +37,7 @@ export const EnergyOfferingsTable = ({ data, onShowDetailsClick }: Props) => {
       handleRowUpdate
     );
     socketClient.subscribe(
-      REAL_TIME_EVENT_NAMES.STATUS_ACCEPTED,
+      REAL_TIME_EVENT_NAMES.STATUS_COMPLETED,
       handleRowUpdate
     );
   }, [onSelectEnergyOffering]);

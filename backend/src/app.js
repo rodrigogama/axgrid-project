@@ -57,10 +57,10 @@ app.post('/api/energy-offerings/:id/buy', async (req, res) => {
 
   // simulates an async event processing the request
   setTimeout(() => {
-    offeringsTable.find({ id: parsedId }).assign({ status: 'ACCEPTED' }).write();
+    offeringsTable.find({ id: parsedId }).assign({ status: 'COMPLETED' }).write();
     const updatedOffering = offeringsTable.find({ id: parsedId }).value();
 
-    io.emit('offerings:statusAccepted', updatedOffering);
+    io.emit('offerings:statusCompleted', updatedOffering);
   }, 1500);
 
   res.status(200).send(updatedOffering);

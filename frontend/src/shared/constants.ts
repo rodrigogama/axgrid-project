@@ -7,5 +7,5 @@ export const QUERY_KEYS = {
 export const REAL_TIME_EVENT_NAMES = {
   NEW_OFFERING: "offerings:newOffering",
   STATUS_PROCESSING: "offerings:statusProcessing",
-  STATUS_ACCEPTED: "offerings:statusAccepted",
+  STATUS_COMPLETED: "offerings:statusCompleted",
 };

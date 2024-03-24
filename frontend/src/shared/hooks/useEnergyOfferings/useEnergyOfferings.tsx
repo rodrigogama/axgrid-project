@@ -42,14 +42,14 @@ export const useEnergyOfferings = () => {
       handleOfferingStatusUpdated
     );
     socketClient.subscribe(
-      REAL_TIME_EVENT_NAMES.STATUS_ACCEPTED,
+      REAL_TIME_EVENT_NAMES.STATUS_COMPLETED,
       handleOfferingStatusUpdated
     );
 
     return () => {
       socketClient.unsubscribe(REAL_TIME_EVENT_NAMES.NEW_OFFERING);
       socketClient.unsubscribe(REAL_TIME_EVENT_NAMES.STATUS_PROCESSING);
-      socketClient.unsubscribe(REAL_TIME_EVENT_NAMES.STATUS_ACCEPTED);
+      socketClient.unsubscribe(REAL_TIME_EVENT_NAMES.STATUS_COMPLETED);
     };
   }, [queryClient]);
 

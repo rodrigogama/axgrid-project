@@ -18,7 +18,7 @@ describe("[hooks]: useEnergyOfferings", () => {
     const expectedSocketEvents = [
       REAL_TIME_EVENT_NAMES.NEW_OFFERING,
       REAL_TIME_EVENT_NAMES.STATUS_PROCESSING,
-      REAL_TIME_EVENT_NAMES.STATUS_ACCEPTED,
+      REAL_TIME_EVENT_NAMES.STATUS_COMPLETED,
     ];
 
     const { unmount } = renderQueryHook(() => useEnergyOfferings());

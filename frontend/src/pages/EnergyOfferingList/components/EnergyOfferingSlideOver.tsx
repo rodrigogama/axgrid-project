@@ -12,7 +12,7 @@ import { useUpdateEnergyOfferingStatus } from "../../../shared/hooks/useUpdateEn
 const statusesVariants: { [k: string]: BadgeProps["variant"] } = {
   OPEN: "info",
   PROCESSING: "warn",
-  ACCEPTED: "success",
+  COMPLETED: "success",
 };
 
 export const EnergyOfferingSlideOver = ({ isOpen, onClose }: Props) => {

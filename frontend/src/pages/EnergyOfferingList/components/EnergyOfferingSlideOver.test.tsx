@@ -79,7 +79,7 @@ describe("[pages]: EnergyOfferingList > EnergyOfferingSlideOver", () => {
 
   it("should show Buy Energy button disabled when energy offering is not OPEN", async () => {
     vi.mocked(useSelectedEnergyOffering, true).mockImplementation(() => ({
-      selectedEnergyOffering: { ...selectedOfferingMock, status: "ACCEPTED" },
+      selectedEnergyOffering: { ...selectedOfferingMock, status: "COMPLETED" },
       onSelectEnergyOffering: onSelectEnergyOfferingMock,
     }));
 
